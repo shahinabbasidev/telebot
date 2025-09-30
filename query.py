@@ -15,6 +15,15 @@ def insert_user(user_id,user_name):
     conn, cursor = connect_to_db()
     cursor.execute('INSERT OR IGNORE INTO users (user_id, user_name) VALUES (?, ?)', (user_id, user_name))
 
-
     conn.commit()
     conn.close()
+
+
+def show_service():
+    conn, cursor = connect_to_db()
+    cursor.execute('SELECT service_id , service_name FROM services')
+    services = cursor.fetchall()
+
+
+    conn.close()
+    return services
